@@ -1,0 +1,8 @@
+FROM openjdk:{{ cookiecutter.openjdk_version }}
+
+RUN mkdir -p /project
+RUN adduser openjdk
+
+USER openjdk
+
+WORKDIR /project

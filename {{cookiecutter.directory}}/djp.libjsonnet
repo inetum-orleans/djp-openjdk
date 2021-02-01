@@ -1,0 +1,24 @@
+local ddb = import 'ddb.docker.libjsonnet';
+
+local defaultName = ddb.File(std.thisFile).parent.name;
+
+local factory(name, params={}) =
+	{services+: {
+		[name]+:
+			ddb.Build(defaultName) +
+			ddb.User() +
+			ddb.Binary("java", "/project", "java", exe=true)
+			{
+				tty: true,
+				entrypoint: "/bin/sh",
+				volumes+: [
+					ddb.path.project + ":/project"
+				]
+			}
+		}
+	};
+
+{
+  factory: factory,
+  defaultName: defaultName
+}
