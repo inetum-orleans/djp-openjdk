@@ -1,4 +1,4 @@
 {
   "directory": ".docker/openjdk",
-  "openjdk_version": ["11-jdk", "15-jdk", "16-jdk", "17-jdk", "8-jdk"]
+  "openjdk_version": "11-jdk"
 }
